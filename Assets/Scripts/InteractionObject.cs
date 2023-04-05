@@ -116,6 +116,9 @@ public class InteractionObject : MonoBehaviour
             case DialogueClass.Objects.Anvil:
                 if (player.GetComponent<Character>().Anvils >= dia.requiredAmount) return true;
                 else return false;
+            case DialogueClass.Objects.Shield:
+                if (player.GetComponent<Character>().Shields >= dia.requiredAmount) return true;
+                else return false;
             default:
                 return false;
         }

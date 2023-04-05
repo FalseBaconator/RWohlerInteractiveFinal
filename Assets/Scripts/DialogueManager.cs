@@ -79,6 +79,9 @@ public class DialogueManager : MonoBehaviour
             case DialogueClass.Objects.Anvil:
                 player.GetComponent<Character>().Anvils -= dialogueClass.consumedAmount;
                 break;
+            case DialogueClass.Objects.Shield:
+                player.GetComponent<Character>().Shields -= dialogueClass.consumedAmount;
+                break;
         }
         switch (dialogueClass.reward)
         {
@@ -99,6 +102,9 @@ public class DialogueManager : MonoBehaviour
                 break;
             case DialogueClass.Objects.Anvil:
                 player.GetComponent<Character>().Anvils += dialogueClass.rewardAmount;
+                break;
+            case DialogueClass.Objects.Shield:
+                player.GetComponent<Character>().Shields += dialogueClass.rewardAmount;
                 break;
         }
         dialogueUI.SetActive(false);

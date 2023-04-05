@@ -34,6 +34,7 @@ public class Character : MonoBehaviour
     public int Potions = 0;
     public int Letters = 0;
     public int Anvils = 0;
+    public int Shields = 0;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
