@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueClass : MonoBehaviour
 {
+    public int priority = 0;
     public bool happensOnce;
     public bool happened;
     public bool endQuest;
@@ -11,7 +12,7 @@ public class DialogueClass : MonoBehaviour
 
     public enum Objects
     {
-        None, Coin, Key, Pumpkin, Potion, Letter, Anvil
+        None, Coin, Key, Pumpkin, Potion, Letter, Anvil, Shield
     }
 
     public Objects requirement;

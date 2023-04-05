@@ -71,11 +71,11 @@ public class InteractionObject : MonoBehaviour
         DialogueClass dialogue = new DialogueClass();
         foreach (DialogueClass dia in dialogues)
         {
-            if ((dia.happensOnce && dia.happened == false) || dia.happensOnce == false)
+            if (((dia.happensOnce && dia.happened == false) || dia.happensOnce == false) && dia.priority > dialogue.priority)
             {
-                if (dia.requirement == DialogueClass.Objects.None && (dia.afterQuest == false && questCompleted == false)&& DialogueRequirementCheck(dia) == false) dialogue = dia; //default
-                else if (DialogueRequirementCheck(dia)) dialogue = dia; //with reward
+                if (DialogueRequirementCheck(dia)) dialogue = dia; //quest completing
                 else if (dia.afterQuest && questCompleted) dialogue = dia; //completed quest
+                else if (dia.requirement == DialogueClass.Objects.None && (dia.afterQuest == false && questCompleted == false)&& DialogueRequirementCheck(dia) == false) dialogue = dia; //default
             }
         }
         if (dialogue.endQuest) questCompleted = true;
