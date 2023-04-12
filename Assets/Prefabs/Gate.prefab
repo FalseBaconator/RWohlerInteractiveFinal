@@ -156,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1604298988, guid: 14cdea9723b4fb24fa917529e10dbdd7, type: 3}
+  m_Sprite: {fileID: -967042267, guid: 14cdea9723b4fb24fa917529e10dbdd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   name: 
   infoMessage1: It's Locked
   infoMessage2: I Opened It
-  sprite2: {fileID: 193561342, guid: 14cdea9723b4fb24fa917529e10dbdd7, type: 3}
+  sprite2: {fileID: 2081976419, guid: 14cdea9723b4fb24fa917529e10dbdd7, type: 3}
   infoTime: 2.5
   infoRequirement: 2
   dialogues: []
