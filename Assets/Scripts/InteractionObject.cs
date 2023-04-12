@@ -23,8 +23,11 @@ public class InteractionObject : MonoBehaviour
     public string name;
 
     [Header("Info Object")]
-    public string infoMessage;
+    public string infoMessage1;
+    public string infoMessage2;
+    public Sprite sprite2;
     public float infoTime;
+    public DialogueClass.Objects infoRequirement;
     TMP_Text infoText;
 
     [Header("Dialogue Object")]
@@ -63,7 +66,105 @@ public class InteractionObject : MonoBehaviour
 
     public void Info()
     {
-        StartCoroutine(ShowInfo(infoMessage, infoTime));
+        if(infoRequirement == DialogueClass.Objects.None)
+            StartCoroutine(ShowInfo(infoMessage1, infoTime));
+        else
+        {
+            switch (infoRequirement)
+            {
+                case DialogueClass.Objects.Coin:
+                    if (player.GetComponent<Character>().Coins > 0)
+                    {
+                        player.GetComponent<Character>().Coins--;
+                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                    }
+                    else
+                    {
+                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
+                    }
+                    break;
+                case DialogueClass.Objects.Key:
+                    if (player.GetComponent<Character>().Keys > 0)
+                    {
+                        player.GetComponent<Character>().Keys--;
+                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                    }
+                    else
+                    {
+                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
+                    }
+                    break;
+                case DialogueClass.Objects.Pumpkin:
+                    if (player.GetComponent<Character>().Pumpkins > 0)
+                    {
+                        player.GetComponent<Character>().Pumpkins--;
+                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                    }
+                    else
+                    {
+                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
+                    }
+                    break;
+                case DialogueClass.Objects.Potion:
+                    if (player.GetComponent<Character>().Potions > 0)
+                    {
+                        player.GetComponent<Character>().Potions--;
+                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                    }
+                    else
+                    {
+                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
+                    }
+                    break;
+                case DialogueClass.Objects.Letter:
+                    if (player.GetComponent<Character>().Letters > 0)
+                    {
+                        player.GetComponent<Character>().Letters--;
+                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                    }
+                    else
+                    {
+                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
+                    }
+                    break;
+                case DialogueClass.Objects.Anvil:
+                    if (player.GetComponent<Character>().Anvils > 0)
+                    {
+                        player.GetComponent<Character>().Anvils--;
+                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                    }
+                    else
+                    {
+                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
+                    }
+                    break;
+                case DialogueClass.Objects.Shield:
+                    if (player.GetComponent<Character>().Shields > 0)
+                    {
+                        player.GetComponent<Character>().Shields--;
+                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
+                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                    }
+                    else
+                    {
+                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
+                    }
+                    break;
+            }
+        }
     }
 
     public void Dialogue()

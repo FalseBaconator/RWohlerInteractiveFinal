@@ -16,6 +16,10 @@ PrefabInstance:
       value: It's empty
       objectReference: {fileID: 0}
     - target: {fileID: 393200458349119543, guid: a4b343db539719f4fbc73ee329002c2d, type: 3}
+      propertyPath: infoMessage1
+      value: It's Empty
+      objectReference: {fileID: 0}
+    - target: {fileID: 393200458349119543, guid: a4b343db539719f4fbc73ee329002c2d, type: 3}
       propertyPath: interactiveType
       value: 2
       objectReference: {fileID: 0}

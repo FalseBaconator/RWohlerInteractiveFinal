@@ -243,11 +243,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70ec3656480e9348820f329ef04774c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentInteractiveObj: {fileID: 0}
+  currentInterObjScript: {fileID: 0}
   anim: {fileID: 6048878918457420275}
   col: {fileID: 6048878918157208399}
   rb: {fileID: 6048878918157208396}
   speedMin: 0.1
   speed: 1000
+  Coins: 0
+  Keys: 0
+  Pumpkins: 0
+  Potions: 0
+  Letters: 0
+  Anvils: 0
+  Shields: 0
 --- !u!1 &6048878918457420276
 GameObject:
   m_ObjectHideFlags: 0
