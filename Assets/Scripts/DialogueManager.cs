@@ -107,6 +107,54 @@ public class DialogueManager : MonoBehaviour
                 player.GetComponent<Character>().Shields += dialogueClass.rewardAmount;
                 break;
         }
+        switch (dialogueClass.startQuest)
+        {
+            case Character.Quests.GetShield:
+                player.GetComponent<Character>().activeQuests.Add(Character.Quests.GetShield);
+                break;
+            case Character.Quests.GetAnvil:
+                player.GetComponent<Character>().activeQuests.Add(Character.Quests.GetAnvil);
+                break;
+            case Character.Quests.CalmSparky:
+                player.GetComponent<Character>().activeQuests.Add(Character.Quests.CalmSparky);
+                break;
+            case Character.Quests.GetPotion:
+                player.GetComponent<Character>().activeQuests.Add(Character.Quests.GetPotion);
+                break;
+            case Character.Quests.GetPumpkin:
+                player.GetComponent<Character>().activeQuests.Add(Character.Quests.GetPumpkin);
+                break;
+            case Character.Quests.GetCoins:
+                player.GetComponent<Character>().activeQuests.Add(Character.Quests.GetCoins);
+                break;
+        }
+        switch (dialogueClass.endQuest)
+        {
+            case Character.Quests.GetShield:
+                player.GetComponent<Character>().completedQuests.Add(Character.Quests.GetShield);
+                player.GetComponent<Character>().activeQuests.Remove(Character.Quests.GetShield);
+                break;
+            case Character.Quests.GetAnvil:
+                player.GetComponent<Character>().completedQuests.Add(Character.Quests.GetAnvil);
+                player.GetComponent<Character>().activeQuests.Remove(Character.Quests.GetAnvil);
+                break;
+            case Character.Quests.CalmSparky:
+                player.GetComponent<Character>().completedQuests.Add(Character.Quests.CalmSparky);
+                player.GetComponent<Character>().activeQuests.Remove(Character.Quests.CalmSparky);
+                break;
+            case Character.Quests.GetPotion:
+                player.GetComponent<Character>().completedQuests.Add(Character.Quests.GetPotion);
+                player.GetComponent<Character>().activeQuests.Remove(Character.Quests.GetPotion);
+                break;
+            case Character.Quests.GetPumpkin:
+                player.GetComponent<Character>().completedQuests.Add(Character.Quests.GetPumpkin);
+                player.GetComponent<Character>().activeQuests.Remove(Character.Quests.GetPumpkin);
+                break;
+            case Character.Quests.GetCoins:
+                player.GetComponent<Character>().completedQuests.Add(Character.Quests.GetCoins);
+                player.GetComponent<Character>().activeQuests.Remove(Character.Quests.GetCoins);
+                break;
+        }
         dialogueUI.SetActive(false);
         dialogue.Clear();
         ResumePlayer();

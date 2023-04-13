@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character : MonoBehaviour
 {
@@ -10,6 +11,17 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     public InteractionObject currentInterObjScript;
+
+    public enum Quests
+    {
+        NotAQuest,
+        GetShield,
+        GetAnvil,
+        CalmSparky,
+        GetPotion,
+        GetPumpkin,
+        GetCoins,
+    }
 
 
     public Animator anim;
@@ -27,14 +39,23 @@ public class Character : MonoBehaviour
     float X;
     float Y;
 
+    public List<Quests> activeQuests = new List<Quests>();
+    public List<Quests> completedQuests = new List<Quests>();
+
     [Header("Inventory")]
     public int Coins = 0;
     public int Keys = 0;
     public int Pumpkins = 0;
+    public int Potatos = 0;
+    public int Carrots = 0;
+    public int Corns = 0;
     public int Potions = 0;
     public int Letters = 0;
     public int Anvils = 0;
     public int Shields = 0;
+
+    [Header("Not Inventory")]
+    public int endSceneIndex;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -52,6 +73,13 @@ public class Character : MonoBehaviour
             currentInteractiveObj = null;
             currentInterObjScript = null;
         }
+    }
+
+    private void Start()
+    {
+        activeQuests.Add(Quests.NotAQuest);
+        completedQuests.Add(Quests.NotAQuest);
+        activeQuests.Add(Quests.GetShield);
     }
 
     // Update is called once per frame
@@ -102,5 +130,23 @@ public class Character : MonoBehaviour
             anim.SetFloat("LastX", anim.GetFloat("X"));
             anim.SetFloat("LastY", anim.GetFloat("Y"));
         }
+
+        if(Shields > 0)
+        {
+            completedQuests.Add(Quests.GetShield);
+            SceneManager.LoadScene(endSceneIndex);
+        }
     }
+
+    public string writeArray(List<Quests> list)
+    {
+        string sentence = "";
+        foreach (Quests quest in list)
+        {
+            sentence += quest + ", ";
+        }
+        return sentence;
+    }
+
+
 }

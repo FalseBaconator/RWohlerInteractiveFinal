@@ -5,10 +5,10 @@ using UnityEngine;
 public class DialogueClass : MonoBehaviour
 {
     public int priority = 0;
-    public bool happensOnce;
-    public bool happened;
-    public bool endQuest;
-    public bool afterQuest;
+    public Character.Quests activeQuest;
+    public Character.Quests startQuest;
+    public Character.Quests endQuest;
+    public Character.Quests completedQuest;
 
     public enum Objects
     {

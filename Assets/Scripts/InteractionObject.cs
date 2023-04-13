@@ -60,6 +60,15 @@ public class InteractionObject : MonoBehaviour
             case "Pumpkin":
                 player.GetComponent<Character>().Pumpkins++;
                 break;
+            case "Potato":
+                player.GetComponent<Character>().Potatos++;
+                break;
+            case "Carrot":
+                player.GetComponent<Character>().Carrots++;
+                break;
+            case "Corn":
+                player.GetComponent<Character>().Corns++;
+                break;
         }
         gameObject.SetActive(false);
     }
@@ -170,22 +179,17 @@ public class InteractionObject : MonoBehaviour
     public void Dialogue()
     {
         DialogueClass dialogue = new DialogueClass();
+        dialogue.priority = 0;
+        dialogue.sentences = new string[] { "ERROR! NO VALID DIALOGUES!" };
         foreach (DialogueClass dia in dialogues)
         {
-            if (((dia.happensOnce && dia.happened == false) || dia.happensOnce == false) && dia.priority > dialogue.priority)
+            if (player.GetComponent<Character>().activeQuests.Contains(dia.activeQuest) && player.GetComponent<Character>().completedQuests.Contains(dia.completedQuest)
+                && dia.priority > dialogue.priority)
             {
-                if (DialogueRequirementCheck(dia)) dialogue = dia; //quest completing
-                else if (dia.afterQuest && questCompleted) dialogue = dia; //completed quest
-                else if (dia.requirement == DialogueClass.Objects.None && (dia.afterQuest == false && questCompleted == false)&& DialogueRequirementCheck(dia) == false) dialogue = dia; //default
+                if (DialogueRequirementCheck(dia)) dialogue = dia;
             }
         }
-        if (dialogue.endQuest) questCompleted = true;
-        if (dialogue.reward != DialogueClass.Objects.None)
-        {
-
-        }
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        dialogue.happened = true;
     }
 
     IEnumerator ShowInfo(string message, float delay)
@@ -199,6 +203,8 @@ public class InteractionObject : MonoBehaviour
     {
         switch (dia.requirement)
         {
+            case DialogueClass.Objects.None:
+                return true;
             case DialogueClass.Objects.Coin:
                 if (player.GetComponent<Character>().Coins >= dia.requiredAmount) return true;
                 else return false;

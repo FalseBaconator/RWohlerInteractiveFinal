@@ -253,10 +253,14 @@ MonoBehaviour:
   Coins: 0
   Keys: 0
   Pumpkins: 0
+  Potatos: 0
+  Carrots: 0
+  Corns: 0
   Potions: 0
   Letters: 0
   Anvils: 0
   Shields: 0
+  endSceneIndex: 2
 --- !u!1 &6048878918457420276
 GameObject:
   m_ObjectHideFlags: 0
