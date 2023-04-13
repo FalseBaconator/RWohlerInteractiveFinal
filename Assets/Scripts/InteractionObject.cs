@@ -75,105 +75,74 @@ public class InteractionObject : MonoBehaviour
 
     public void Info()
     {
-        if(infoRequirement == DialogueClass.Objects.None)
-            StartCoroutine(ShowInfo(infoMessage1, infoTime));
-        else
+        switch (infoRequirement)
         {
-            switch (infoRequirement)
-            {
-                case DialogueClass.Objects.Coin:
-                    if (player.GetComponent<Character>().Coins > 0)
-                    {
-                        player.GetComponent<Character>().Coins--;
-                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
-                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
-                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
-                    }
-                    else
-                    {
-                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
-                    }
-                    break;
-                case DialogueClass.Objects.Key:
-                    if (player.GetComponent<Character>().Keys > 0)
-                    {
-                        player.GetComponent<Character>().Keys--;
-                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
-                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
-                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
-                    }
-                    else
-                    {
-                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
-                    }
-                    break;
-                case DialogueClass.Objects.Pumpkin:
-                    if (player.GetComponent<Character>().Pumpkins > 0)
-                    {
-                        player.GetComponent<Character>().Pumpkins--;
-                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
-                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
-                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
-                    }
-                    else
-                    {
-                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
-                    }
-                    break;
-                case DialogueClass.Objects.Potion:
-                    if (player.GetComponent<Character>().Potions > 0)
-                    {
-                        player.GetComponent<Character>().Potions--;
-                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
-                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
-                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
-                    }
-                    else
-                    {
-                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
-                    }
-                    break;
-                case DialogueClass.Objects.Letter:
-                    if (player.GetComponent<Character>().Letters > 0)
-                    {
-                        player.GetComponent<Character>().Letters--;
-                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
-                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
-                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
-                    }
-                    else
-                    {
-                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
-                    }
-                    break;
-                case DialogueClass.Objects.Anvil:
-                    if (player.GetComponent<Character>().Anvils > 0)
-                    {
-                        player.GetComponent<Character>().Anvils--;
-                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
-                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
-                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
-                    }
-                    else
-                    {
-                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
-                    }
-                    break;
-                case DialogueClass.Objects.Shield:
-                    if (player.GetComponent<Character>().Shields > 0)
-                    {
-                        player.GetComponent<Character>().Shields--;
-                        StartCoroutine(ShowInfo(infoMessage2, infoTime));
-                        gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
-                        gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
-                    }
-                    else
-                    {
-                        StartCoroutine(ShowInfo(infoMessage1, infoTime));
-                    }
-                    break;
-            }
+            case DialogueClass.Objects.Coin:
+                if (player.GetComponent<Character>().Coins > 0)
+                {
+                    player.GetComponent<Character>().Coins--;
+                    infoMessage1 = infoMessage2;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                    gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                }
+                break;
+            case DialogueClass.Objects.Key:
+                if (player.GetComponent<Character>().Keys > 0)
+                {
+                    player.GetComponent<Character>().Keys--;
+                    infoMessage1 = infoMessage2;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                    gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                }
+                break;
+            case DialogueClass.Objects.Pumpkin:
+                if (player.GetComponent<Character>().Pumpkins > 0)
+                {
+                    player.GetComponent<Character>().Pumpkins--;
+                    infoMessage1 = infoMessage2;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                    gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                }
+                break;
+            case DialogueClass.Objects.Potion:
+                if (player.GetComponent<Character>().Potions > 0)
+                {
+                    player.GetComponent<Character>().Potions--;
+                    infoMessage1 = infoMessage2;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                    gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                }
+                break;
+            case DialogueClass.Objects.Letter:
+                if (player.GetComponent<Character>().Letters > 0)
+                {
+                    player.GetComponent<Character>().Letters--;
+                    infoMessage1 = infoMessage2;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                    gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                }
+                break;
+            case DialogueClass.Objects.Anvil:
+                if (player.GetComponent<Character>().Anvils > 0)
+                {
+                    player.GetComponent<Character>().Anvils--;
+                    infoMessage1 = infoMessage2;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                    gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                }
+                break;
+            case DialogueClass.Objects.Shield:
+                if (player.GetComponent<Character>().Shields > 0)
+                {
+                    player.GetComponent<Character>().Shields--;
+                    infoMessage1 = infoMessage2;
+                    gameObject.GetComponent<SpriteRenderer>().sprite = sprite2;
+                    gameObject.transform.GetChild(0).GetComponent<Collider2D>().isTrigger = true;
+                }
+                break;
         }
+
+        StartCoroutine(ShowInfo(infoMessage1, infoTime));
     }
 
     public void Dialogue()
