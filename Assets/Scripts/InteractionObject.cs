@@ -61,7 +61,7 @@ public class InteractionObject : MonoBehaviour
                 player.GetComponent<Character>().Pumpkins++;
                 break;
             case "Potato":
-                player.GetComponent<Character>().Potatos++;
+                player.GetComponent<Character>().Potatoes++;
                 break;
             case "Carrot":
                 player.GetComponent<Character>().Carrots++;

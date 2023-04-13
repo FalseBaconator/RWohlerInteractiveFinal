@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Character : MonoBehaviour
 {
@@ -43,19 +44,32 @@ public class Character : MonoBehaviour
     public List<Quests> completedQuests = new List<Quests>();
 
     [Header("Inventory")]
+    public GameObject Inventory;
     public int Coins = 0;
+    public TMP_Text coinText;
     public int Keys = 0;
+    public TMP_Text keyText;
     public int Pumpkins = 0;
-    public int Potatos = 0;
+    public TMP_Text pumpkinText;
+    public int Potatoes = 0;
+    public TMP_Text potatoText;
     public int Carrots = 0;
+    public TMP_Text carrotText;
     public int Corns = 0;
+    public TMP_Text cornText;
     public int Potions = 0;
+    public TMP_Text potionText;
     public int Letters = 0;
+    public TMP_Text letterText;
     public int Anvils = 0;
+    public TMP_Text anvilText;
     public int Shields = 0;
+    public TMP_Text shieldText;
 
     [Header("Not Inventory")]
     public int endSceneIndex;
+
+    bool menuOpen = false;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -94,7 +108,9 @@ public class Character : MonoBehaviour
         anim.SetFloat("Y", Dir.y);
         anim.SetFloat("Speed", mag);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Pause")) ToggleMenu();
+
+        if (Input.GetButtonDown("Fire1") && menuOpen == false)
         {
             if(currentInteractiveObj != null)
             {
@@ -148,5 +164,30 @@ public class Character : MonoBehaviour
         return sentence;
     }
 
+    private void ToggleMenu()
+    {
+        if (menuOpen)
+        {
+            menuOpen = false;
+            Time.timeScale = 1;
+            Inventory.SetActive(false);
+        }
+        else
+        {
+            menuOpen = true;
+            Time.timeScale = 0;
+            Inventory.SetActive(true);
+            coinText.text = Coins.ToString("00");
+            keyText.text = Keys.ToString("00");
+            pumpkinText.text = Pumpkins.ToString("00");
+            potatoText.text = Potatoes.ToString("00");
+            carrotText.text = Carrots.ToString("00");
+            cornText.text = Corns.ToString("00");
+            potionText.text = Potions.ToString("00");
+            letterText.text = Letters.ToString("00");
+            anvilText.text = Anvils.ToString("00");
+            shieldText.text = Shields.ToString("00");
+        }
+    }
 
 }
